@@ -8,10 +8,6 @@
     <form action="/ideas/{{idea._id}}?_method=PUT" method="post">
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
-            <label for="title">Id</label>
-            <input type="text" class="form-control" name="id" id="id" value="{{idea._id}}" required>
-        </div>
-        <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" id="title" value="{{idea.title}}" required>
         </div>
