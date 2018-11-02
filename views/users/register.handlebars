@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card card-body">
+            <h3 class="text-center">
+                Account Register
+            </h3>
+            <img src="/img/logo.png" class="logo">
+            <form action="/users/register" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" value="{{name}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" value="{{email}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{password}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Repeat Password</label>
+                    <input type="password" class="form-control" name="confirm" value="{{confirm}}" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Register</button>
+            </form>
+
+            <p class='text-center'>Already have an account ? <a href="/users/register">Login !</a></p>
+        </div>
+    </div>
+</div>
