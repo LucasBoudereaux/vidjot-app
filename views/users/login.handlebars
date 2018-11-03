@@ -5,7 +5,7 @@
                 Account Login
             </h3>
             <img src="/img/logo.png" class="logo">
-            <form>
+            <form method="post" action="/users/login">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" value="{{email}}" required>
@@ -14,8 +14,8 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" required>
                 </div>
+                <button type="submit" class="btn btn-block btn-primary">Login</button>
             </form>
-            <button type="submit" class="btn btn-primary mb-2">Login</button>
             <p class='text-center'>Doesn't have an account ? <a href="/users/register">Get one !</a></p>
         </div>
     </div>
