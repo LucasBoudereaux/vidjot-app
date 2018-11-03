@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const timestamp = require('mongoose-timestamp')
+const User = require('./User')
 
 const IdeaSchema = new mongoose.Schema({
     title: {
@@ -12,6 +13,10 @@ const IdeaSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    user: {
+        type: String,
+        required: true
+    }
 })
 
 IdeaSchema.plugin(timestamp)

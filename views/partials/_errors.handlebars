@@ -1,3 +1,9 @@
+{{!-- passport send an variable named `error` --}}
+{{#if error}}
+<div class="alert alert-danger">{{ error }}</div>
+{{/if}}
+
+{{!-- errors thrown by us --}}
 {{#each errors}}
 <div class="alert alert-danger">{{text}}</div>
 {{else}}

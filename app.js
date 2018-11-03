@@ -7,8 +7,12 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const passport = require('passport')
 //we use flash message because when we delete or edit an idea, we are redirected //to see immediately the changes (and we cannot pass a plain message as we use to be with render).
 const flash = require('connect-flash')
+
+//passport config
+require('./config/passport')(passport)
 //Load routes
 const ideasRoutes = require('./routes/Ideas')
 const usersRoutes = require('./routes/Users')
@@ -19,18 +23,6 @@ const pjson = require('./package.json')
 
 //Server and DB connection
 const app = express()
-
-app.listen(config.SERVER_PORT, async () => {
-    console.log(`Server is running on port ${config.SERVER_PORT}`)
-    try {
-        await mongoose.connect(config.DATABASE_URL, {
-            useNewUrlParser: true
-        })
-        console.log("MongoDB connected.")
-    } catch (err) {
-        console.log(`An error occured while connecting to the database\n${err}`)
-    }
-})
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')))
@@ -59,6 +51,10 @@ app.use(session({
     saveUninitialized: true
 }))
 
+//Passport middleware (have to be after the express session middleware)
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Connect flash middleware
 app.use(flash())
 
@@ -67,6 +63,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
+    res.locals.user = req.user || null
     next()
 })
 
@@ -86,3 +83,15 @@ app.use('/ideas', ideasRoutes)
 
 //Everything prefixed by '/users' will use routed located in ./routes/User.js
 app.use('/users', usersRoutes)
+
+app.listen(config.PORT, async () => {
+    console.log(`Server is running on port ${config.PORT}`)
+    try {
+        await mongoose.connect(config.DATABASE_URL, {
+            useNewUrlParser: true
+        })
+        console.log("MongoDB connected.")
+    } catch (err) {
+        console.log(`An error occured while connecting to the database\n${err}`)
+    }
+})
