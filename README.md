@@ -4,9 +4,9 @@ This project is to enhance my knowledge about NodeJS and especially Express then
 
 It's basically a CRUD app, based on the Udemy [course](https://www.udemy.com/nodejs-express-mongodb-dev-to-deployment/) of Brad Traversy.
 
-You can access a live version of the app at : https://vvidjot.herokuapp.com/ideas
+You can access a live version of the app at : https://vvidjot.herokuapp.com
 
-To test you can use the following account (note the inspiration... :relieved: ) : 
+To test you can use following accounts (note the inspiration... :relieved: ) : 
 
 `some.email@gmail.com:1234`
 
